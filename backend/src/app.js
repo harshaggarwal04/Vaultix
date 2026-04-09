@@ -1,6 +1,7 @@
 const express = require("express");
 const NotFoundError = require("./middlewares/404Handling");
 const ApiError = require("./utils/ApiError");
+const ValidationMiddleware = require("./middlewares/ValidationMiddleware");
 
 const app = express();
 app.use(express.json({}));
@@ -18,7 +19,6 @@ app.use(/.*/, (req,res, next)=>{
 })
 
 app.use(NotFoundError);
-
 
  
 module.exports = app;
