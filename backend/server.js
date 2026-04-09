@@ -1,12 +1,14 @@
-const app = require("./src/app");
-const {config} = require("dotenv");
+const { config } = require("dotenv");
+const path = require("path");
+
 config({
-    path: ".env",
-})
+  path: path.join(__dirname, "../.env"), // since .env is in root
+});
 
+const app = require("./src/app"); // ✅ AFTER env loads
 
+const port = process.env.PORT || 5000;
 
-const port = process.env.PORT;
-app.listen( port , ()=>{
-    console.log(`listening to port ${port}`)
-})
+app.listen(port, () => {
+  console.log(`listening to port ${port}`);
+});

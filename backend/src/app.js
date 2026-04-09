@@ -3,7 +3,7 @@ const NotFoundError = require("./middlewares/404Handling");
 const ApiError = require("./utils/ApiError");
 
 const app = express();
-
+app.use(express.json({}));
 app.use("/api/v1", require("./route"));
 
 app.get("/", (req,res)=>{
