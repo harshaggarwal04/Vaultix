@@ -2,11 +2,16 @@ const express = require("express");
 const NotFoundError = require("./middlewares/404Handling");
 const ApiError = require("./utils/ApiError");
 const ValidationMiddleware = require("./middlewares/ValidationMiddleware");
+const morgan = require("morgan");
+
 
 const app = express();
 app.use(express.json({}));
-app.use("/api/v1", require("./route"));
+app.use(morgan("dev"));
 
+
+
+app.use("/api/v1", require("./route"));
 app.get("/", (req,res)=>{
     res.send("root");
 })
